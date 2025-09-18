@@ -13,6 +13,6 @@
         "logs": "pm2 logs"
     },
     "dependencies": {
-      "pm2": "^4.4.x"
+      "pm2": "^6.0.x"
     }
 }
