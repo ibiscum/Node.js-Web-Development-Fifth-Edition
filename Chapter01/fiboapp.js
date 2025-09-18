@@ -1,5 +1,5 @@
-var http = require('http');
-var url  = require('url');
+import { createServer } from 'http';
+import { parse } from 'url';
 
 const fibonacci = exports.fibonacci = function(n) {
     if (n === 1 || n === 2)
@@ -8,8 +8,8 @@ const fibonacci = exports.fibonacci = function(n) {
         return fibonacci(n-1) + fibonacci(n-2);
 }
 
-http.createServer(function (req, res) {
-  var urlP = url.parse(req.url, true);
+createServer(function (req, res) {
+  var urlP = parse(req.url, true);
   var fibo;
   res.writeHead(200, {'Content-Type': 'text/plain'});
   if (urlP.query['n']) {
