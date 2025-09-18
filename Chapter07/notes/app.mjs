@@ -3,7 +3,7 @@ import { default as hbs } from 'hbs';
 import * as path from 'path';
 // import * as favicon from'serve-favicon';
 import { default as logger } from 'morgan';
-import { default as rfs } from 'rotating-file-stream';
+import * as rfs from 'rotating-file-stream';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:debug'); 
 const dbgerror = DBG('notes:error'); 
