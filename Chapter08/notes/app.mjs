@@ -82,7 +82,8 @@ app.use(session({
     secret: 'keyboard mouse',
     resave: true,
     saveUninitialized: true,
-    name: sessionCookieName
+    name: sessionCookieName,
+    cookie: { secure: true }
 }));
 initPassport(app);
 app.use(express.static(path.join(__dirname, 'public')));
