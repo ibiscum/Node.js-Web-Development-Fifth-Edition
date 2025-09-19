@@ -127,7 +127,9 @@ program
         };
         if (typeof cmdObj.email !== 'undefined') topost.emails.push(cmdObj.email);
 
-        console.log('update ', topost);
+        // Log object without sensitive fields (e.g., password)
+        const { password, ...topostSanitized } = topost;
+        console.log('update ', topostSanitized);
         client(program).post(`/update-user/${username}`, topost,
         (err, req, res, obj) => {
             if (err) console.error(err.stack);
