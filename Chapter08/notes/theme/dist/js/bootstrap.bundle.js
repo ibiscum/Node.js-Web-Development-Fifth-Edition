@@ -1145,11 +1145,13 @@
     Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
       var selector = Util.getSelectorFromElement(this);
 
-      if (!selector) {
+      if (!selector || typeof selector !== 'string' || selector.trim().charAt(0) === '<') {
+        // If selector is missing or looks like HTML, do not proceed
         return;
       }
 
-      var target = $(selector)[0];
+      // Use document.querySelector to safely select the target element
+      var target = document.querySelector(selector);
 
       if (!target || !$(target).hasClass(ClassName$2.CAROUSEL)) {
         return;
