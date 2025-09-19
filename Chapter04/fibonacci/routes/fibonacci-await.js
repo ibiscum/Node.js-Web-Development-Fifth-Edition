@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
-const math = require('../math');
+import { fibonacciAwait } from '../math';
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   if (req.query.fibonum) {
     // Calculate using async-aware function, in this server
-    math.fibonacciAwait(req.query.fibonum)
+    fibonacciAwait(req.query.fibonum)
     .then(fiboval => {
       console.log(`fibonacciAwait ${req.query.fibonum} => ${fiboval}`);
       res.render('fibonacci', {
@@ -26,4 +26,4 @@ router.get('/', function(req, res, next) {
   }
 });
 
-module.exports = router;
+export default router;

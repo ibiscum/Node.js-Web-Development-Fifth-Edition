@@ -1,5 +1,5 @@
 
-const math = require('./math');
+import { fibonacciAsync } from './math';
 
 // Uncomment this section for synchronous Fibonacci
 /*
@@ -23,7 +23,7 @@ for (var num = 1; num < 8000; num++) {
 (async () => {
     for (var num = 1; num < 8000; num++) {
         await new Promise((resolve, reject) => {
-            math.fibonacciAsync(num, (err, fibo) => {
+            fibonacciAsync(num, (err, fibo) => {
                 if (err) reject(err);
                 else {
                     let now = new Date().toISOString();

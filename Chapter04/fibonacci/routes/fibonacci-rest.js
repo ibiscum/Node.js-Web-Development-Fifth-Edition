@@ -1,11 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const http = require('http');
-const math = require('../math');
+import { Router } from 'express';
+const router = Router();
+import { request } from 'http';
+//import math from '../math';
 
 router.get('/', function (req, res, next) {
     if (req.query.fibonum) {
-        var httpreq = http.request({
+        var httpreq = request({
             host: "localhost",
             port: process.env.SERVERPORT,
             path: `/fibonacci/${Math.floor(req.query.fibonum)}`,
@@ -32,4 +32,4 @@ router.get('/', function (req, res, next) {
     }
 });
 
-module.exports = router;
+export default router;

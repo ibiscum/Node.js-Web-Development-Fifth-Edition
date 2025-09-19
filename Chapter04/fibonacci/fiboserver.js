@@ -1,10 +1,10 @@
-const math  = require('./math');
-const express = require('express');
-const logger = require('morgan');
+import { fibonacciAsync } from './math';
+import express from 'express';
+import logger from 'morgan';
 const app = express();
 app.use(logger('dev'));
 app.get('/fibonacci/:n', (req, res, next) => {
-    math.fibonacciAsync(Math.floor(req.params.n), (err, val) => {
+    fibonacciAsync(Math.floor(req.params.n), (err, val) => {
         if (err) next(`FIBO SERVER ERROR ${err}`);
         else {
             res.send({

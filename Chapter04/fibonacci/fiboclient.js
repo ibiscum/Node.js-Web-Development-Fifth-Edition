@@ -1,4 +1,4 @@
-const http = require('http');
+import { request } from 'http';
 [
   "/fibonacci/30", "/fibonacci/20", "/fibonacci/10",
   "/fibonacci/9", "/fibonacci/8", "/fibonacci/7",
@@ -6,7 +6,7 @@ const http = require('http');
   "/fibonacci/3", "/fibonacci/2", "/fibonacci/1"
 ].forEach((path) => {
     console.log(`${new Date().toISOString()} requesting ${path}`);
-    var req = http.request({
+    var req = request({
       host: "localhost",
       port: process.env.SERVERPORT,
       path,

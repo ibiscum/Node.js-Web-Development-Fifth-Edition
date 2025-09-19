@@ -1,14 +1,14 @@
-const express = require('express'); 
-const router = express.Router(); 
+import { Router } from 'express'; 
+const router = Router(); 
  
-const math = require('../math'); 
+import { fibonacci } from '../math'; 
 router.get('/', function(req, res, next) { 
   if (req.query.fibonum) { 
     // Calculate directly in this server 
     res.render('fibonacci', { 
       title: "Calculate Fibonacci numbers", 
       fibonum: req.query.fibonum, 
-      fiboval: math.fibonacci(req.query.fibonum) 
+      fiboval: fibonacci(req.query.fibonum) 
     }); 
   } else { 
     res.render('fibonacci', { 
@@ -18,4 +18,4 @@ router.get('/', function(req, res, next) {
   } 
 }); 
  
-module.exports = router; 
+export default router; 
