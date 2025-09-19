@@ -9,6 +9,16 @@ import DBG from 'debug';
 const log = DBG('users:service'); 
 const error = DBG('users:error'); 
 
+// Helper to redact password from logged user params
+function sanitizeUserParams(params) {
+    if (!params || typeof params !== 'object') return params;
+    // clone and replace password
+    return {
+        ...params,
+        password: params.password !== undefined ? '***REDACTED***' : undefined,
+    };
+}
+
 import { default as bcrypt } from 'bcrypt';
 
 ///////////// Set up the REST server
@@ -66,7 +76,7 @@ server.post('/update-user/:username', async (req, res, next) => {
         log(`update-user params ${util.inspect(req.params)}`);
         await connectDB();
         let toupdate = userParams(req);
-        log(`updating ${util.inspect(toupdate)}`);
+        log(`updating user: ${toupdate.username}`);
         await SQUser.update(toupdate, { where: { username: req.params.username }});
         const result = await findOneUser(req.params.username);
         log('updated '+ util.inspect(result));
