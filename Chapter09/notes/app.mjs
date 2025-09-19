@@ -107,7 +107,8 @@ app.use(session({
     secret: sessionSecret,
     resave: true,
     saveUninitialized: true,
-    name: sessionCookieName
+    name: sessionCookieName,
+    cookie: { secure: true, httpOnly: true }
 }));
 initPassport(app);
 app.use(express.static(path.join(__dirname, 'public')));
