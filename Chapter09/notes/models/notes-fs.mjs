@@ -5,7 +5,7 @@ import { approotdir } from '../approotdir.mjs';
 import { Note, AbstractNotesStore } from './Notes.mjs';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:notes-fs');
-const error = DBG('notes:error-fs');
+// const error = DBG('notes:error-fs');
 
 export default class FSNotesStore extends AbstractNotesStore {
 

@@ -3,7 +3,7 @@ import { default as hbs } from 'hbs';
 import * as path from 'path';
 // import * as favicon from'serve-favicon';
 import { default as logger } from 'morgan';
-import { default as rfs } from 'rotating-file-stream';
+import * as rfs from 'rotating-file-stream';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:debug'); 
 const dbgerror = DBG('notes:error');
@@ -17,17 +17,19 @@ import {
     normalizePort, onError, onListening, handle404, basicErrorHandler
 } from './appsupport.mjs';
 
-import dotenv from 'dotenv/config.js';
+// import dotenv from 'dotenv/config.js';
 
 import {
     router as indexRouter, init as homeInit
 } from './routes/index.mjs';
+
 import { 
     router as notesRouter, init as notesInit
 }  from './routes/notes.mjs';
+
 import { router as usersRouter, initPassport } from './routes/users.mjs';
 
-import socketio from 'socket.io';
+import * as socketio from 'socket.io';
 import passportSocketIo from 'passport.socketio'; 
 
 import session from 'express-session';
@@ -39,10 +41,11 @@ const FileStore = sessionFileStore(session);
 
 export const sessionCookieName = 'notescookie.sid';
 const sessionSecret = 'keyboard mouse';
-// const sessionStore  = new MemoryStore({});
-const sessionStore  = new FileStore({ path: "sessions" }); 
+// const sessionStore = new MemoryStore({});
+const sessionStore = new FileStore({ path: "sessions" }); 
 
 import { useModel as useNotesModel } from './models/notes-store.mjs';
+
 useNotesModel(process.env.NOTES_MODEL ? process.env.NOTES_MODEL : "memory")
 .then(store => {
     debug(`Using NotesStore ${store}`);
@@ -65,7 +68,7 @@ server.on('request', (req, res) => {
 server.on('error', onError);
 server.on('listening', onListening);
 
-export const io = socketio(server);
+const io = socketio(server);
 
 io.use(passportSocketIo.authorize({
     cookieParser: cookieParser,
@@ -73,6 +76,8 @@ io.use(passportSocketIo.authorize({
     secret:       sessionSecret,
     store:        sessionStore
 }));
+
+export {io};
 
 // TODO is success and fail callbacks required or useful?  These are marked optional.
 

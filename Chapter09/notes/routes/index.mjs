@@ -6,7 +6,8 @@ export const router = express.Router();
 import { io } from '../app.mjs';
 import DBG from 'debug';
 const debug = DBG('notes:home'); 
-const error = DBG('notes:error-home'); 
+const error = DBG('notes:error-home');
+
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {

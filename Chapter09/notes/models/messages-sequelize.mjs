@@ -1,17 +1,16 @@
 import Sequelize from 'sequelize';
-import util      from 'util';
 import {
     connectDB as connectSequlz,
-    close as closeSequlz
+    // close as closeSequlz
 } from './sequlz.mjs';
 
 import EventEmitter from 'events';
 class MessagesEmitter extends EventEmitter {}
 export const emitter = new MessagesEmitter();
 
-import DBG from 'debug';
-const debug = DBG('notes:model-messages');
-const error = DBG('notes:error-messages');
+// import DBG from 'debug';
+// const debug = DBG('notes:model-messages');
+// const error = DBG('notes:error-messages');
  
 let sequelize;
 export class SQMessage extends Sequelize.Model {}
@@ -30,12 +29,12 @@ async function connectDB() {
         timestamp: Sequelize.DATE
     }, {
         hooks: {
-            afterCreate: (message, options) => {
+            afterCreate: (message) => {
                 // debug(`SQMessage CREATE ${util.inspect(message)} ${util.inspect(options)}`);
                 var toEmit = sanitizedMessage(message);
                 emitter.emit('newmessage', toEmit);
             },
-            afterDestroy: (message, options) => {
+            afterDestroy: (message) => {
                 // debug(`SQMessage DESTROY ${util.inspect(message)} ${util.inspect(options)}`);
                 emitter.emit('destroymessage', {
                     id: message.id,
@@ -61,11 +60,13 @@ function sanitizedMessage(msg) {
     };
 }
 
-export async function postMessage(from, namespace, room, message) {
+export async function postMessage(
+    // from, namespace, room, message
+) {
     await connectDB();
-    const newmsg = await SQMessage.create({
-        from, namespace, room, message, timestamp: new Date()
-    });
+    // const newmsg = await SQMessage.create({
+    //     from, namespace, room, message, timestamp: new Date()
+    // });
 }
 
 export async function destroyMessage(id) {

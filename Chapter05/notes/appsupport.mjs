@@ -58,7 +58,6 @@ export function onListening() {
     console.log(`Listening on ${bind}`);
 }
 
-
 export function handle404(req, res, next) {
     const err = new Error('Not Found');
     err.status = 404;
