@@ -42,11 +42,27 @@ export async function connectDB() {
                 && process.env.SEQUELIZE_DBDIALECT !== '') {
             params.params.dialect = process.env.SEQUELIZE_DBDIALECT;
         }
-        // Create copy of params excluding the password and other sensitive info for logging
-        let logParams = JSON.parse(JSON.stringify(params));
-        if ('password' in logParams) {
-            logParams.password = '[REDACTED]';
+        // Recursively redact sensitive fields from params before logging
+        function redactSensitive(obj) {
+            const SENSITIVE_KEYS = ['password', 'passwd', 'pass', 'secret', 'apiKey', 'access_token', 'token'];
+            if (obj && typeof obj === 'object') {
+                // If it's an array, recurse for each element
+                if (Array.isArray(obj)) {
+                    return obj.map(redactSensitive);
+                }
+                const newObj = {};
+                for (const key of Object.keys(obj)) {
+                    if (SENSITIVE_KEYS.includes(key.toLowerCase())) {
+                        newObj[key] = '[REDACTED]';
+                    } else {
+                        newObj[key] = redactSensitive(obj[key]);
+                    }
+                }
+                return newObj;
+            }
+            return obj; // primitive value
         }
+        let logParams = redactSensitive(params);
         debug(`connectDB ${util.inspect(logParams)}`);
         sequlz = new Sequelize(params.dbname,
                         params.username, params.password,
