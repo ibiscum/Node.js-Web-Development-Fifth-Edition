@@ -172,7 +172,7 @@ program
     .command('password-check <username> <password>')
     .description('Check whether the user password checks out')
     .action((username, password, cmdObj) => {
-        console.log(`password check ${username} ${password}`);
+        console.log(`password check for ${username}`);
         client(program).post('/password-check', { username, password },
         (err, req, res, obj) => {
             if (err) console.error(err.stack);
