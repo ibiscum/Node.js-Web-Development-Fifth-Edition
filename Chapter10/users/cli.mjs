@@ -127,7 +127,14 @@ program
         };
         if (typeof cmdObj.email !== 'undefined') topost.emails.push(cmdObj.email);
 
-        console.log('update ', topost);
+        console.log('update ', {
+            username: topost.username,
+            familyName: topost.familyName,
+            givenName: topost.givenName,
+            middleName: topost.middleName,
+            emails: topost.emails,
+            photos: topost.photos
+        });
         client(program).post(`/update-user/${username}`, topost,
         (err, req, res, obj) => {
             if (err) console.error(err.stack);
