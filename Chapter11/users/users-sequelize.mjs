@@ -42,7 +42,9 @@ export async function connectDB() {
         params.params.dialect = process.env.SEQUELIZE_DBDIALECT;
     }
     
-    log('Sequelize params '+ util.inspect(params));
+    // Sanitize sensitive information before logging
+    const sanitizedParams = { ...params, password: '[REDACTED]' };
+    log('Sequelize params ' + util.inspect(sanitizedParams));
     
     sequlz = new Sequelize(params.dbname, params.username, params.password, params.params);
     
