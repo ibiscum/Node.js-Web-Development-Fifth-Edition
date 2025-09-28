@@ -1149,9 +1149,9 @@
         return;
       }
 
-      var target = $(selector)[0];
+      var target = document.querySelector(selector);
 
-      if (!target || !$(target).hasClass(ClassName$2.CAROUSEL)) {
+      if (!target || !$(target).classList.contains(ClassName$2.CAROUSEL)) {
         return;
       }
 
