@@ -152,8 +152,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     name: sessionCookieName,
-    secure: true,
-    maxAge: 2 * 60 * 60 * 1000 // 2 hours
+    cookie: {
+        secure: true,
+        maxAge: 2 * 60 * 60 * 1000 // 2 hours
+    }
 }));
 initPassport(app);
 app.use(express.static(path.join(__dirname, 'public')));
