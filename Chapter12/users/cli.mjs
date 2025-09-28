@@ -127,7 +127,9 @@ program
         };
         if (typeof cmdObj.email !== 'undefined') topost.emails.push(cmdObj.email);
 
-        console.log('update ', topost);
+        // Don't log hashed password field.
+        const { password, ...topostSafe } = topost;
+        console.log('update ', topostSafe);
         client(program).post(`/update-user/${username}`, topost,
         (err, req, res, obj) => {
             if (err) console.error(err.stack);
