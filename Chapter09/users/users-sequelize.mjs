@@ -43,7 +43,7 @@ export async function connectDB() {
     }
     
     // Redact sensitive data before logging
-    const safeParams = { ...params, password: '<redacted>' };
+    const safeParams = redactSensitive(params);
     log('Sequelize params ' + util.inspect(safeParams));
     
     sequlz = new Sequelize(params.dbname, params.username, params.password, params.params);
