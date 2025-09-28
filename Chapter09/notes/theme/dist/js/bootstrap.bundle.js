@@ -161,7 +161,11 @@
       }
 
       try {
-        return document.querySelector(selector) ? selector : null;
+        if (selector) {
+          var selectedElem = document.querySelector(selector);
+          return selectedElem ? selectedElem : null;
+        }
+        return null;
       } catch (err) {
         return null;
       }
@@ -1143,15 +1147,15 @@
     };
 
     Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-      var selector = Util.getSelectorFromElement(this);
+      var target = Util.getSelectorFromElement(this);
 
-      if (!selector) {
+      if (!target) {
         return;
       }
 
-      var target = $(selector)[0];
+      // var target = $(selector)[0];
 
-      if (!target || !$(target).hasClass(ClassName$2.CAROUSEL)) {
+      if (!$(target).hasClass(ClassName$2.CAROUSEL)) {
         return;
       }
 
