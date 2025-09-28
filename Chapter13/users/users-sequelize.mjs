@@ -90,7 +90,9 @@ export async function findOneUser(username) {
 
 export async function createUser(req) {
     let tocreate = userParams(req);
-    console.log(`create tocreate ${util.inspect(tocreate)}`);
+    // Redact password before logging
+    let redacted = { ...tocreate, password: '[REDACTED]' };
+    console.log(`create tocreate ${util.inspect(redacted)}`);
     await SQUser.create(tocreate);
     const result = await findOneUser(req.params.username);
     return result;
