@@ -92,7 +92,9 @@ export async function findOneUser(username) {
 
 export async function createUser(req) {
     let tocreate = userParams(req);
-    console.log(`create tocreate ${util.inspect(tocreate)}`);
+    // Do not log sensitive fields such as password
+    const sanitized = { ...tocreate, password: '[REDACTED]' };
+    console.log(`create tocreate ${util.inspect(sanitized)}`);
     await SQUser.create(tocreate);
     const result = await findOneUser(req.params.username);
     return result;
