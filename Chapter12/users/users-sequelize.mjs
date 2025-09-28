@@ -41,7 +41,24 @@ export async function connectDB() {
         params.params.dialect = process.env.SEQUELIZE_DBDIALECT;
     }
     // Sanitize sensitive fields before logging
-    const safeParams = { ...params, password: '[REDACTED]' };
+    // Utility to recursively redact sensitive keys in an object
+    function deepRedact(obj, sensitiveKeys = ['password']) {
+        if (obj && typeof obj === 'object') {
+            let redacted = Array.isArray(obj) ? [] : {};
+            for (const key in obj) {
+                if (sensitiveKeys.includes(key.toLowerCase())) {
+                    redacted[key] = '[REDACTED]';
+                } else if (obj[key] && typeof obj[key] === 'object') {
+                    redacted[key] = deepRedact(obj[key], sensitiveKeys);
+                } else {
+                    redacted[key] = obj[key];
+                }
+            }
+            return redacted;
+        }
+        return obj;
+    }
+    const safeParams = deepRedact(params, ['password']);
     log('Sequelize params ' + util.inspect(safeParams));
     
     sequlz = new Sequelize(params.dbname, params.username, params.password, params.params);
