@@ -64,7 +64,10 @@ server.post('/update-user/:username', async (req, res, next) => {
         log(`update-user params ${util.inspect(req.params)}`);
         await connectDB();
         let toupdate = userParams(req);
-        log(`updating ${util.inspect(toupdate)}`);
+        // Remove or mask password before logging
+        let toupdateSafe = { ...toupdate };
+        if ('password' in toupdateSafe) toupdateSafe.password = '[REDACTED]';
+        log(`updating ${util.inspect(toupdateSafe)}`);
         await SQUser.update(toupdate, { where: { username: req.params.username }});
         const result = await findOneUser(req.params.username);
         log('updated '+ util.inspect(result));
