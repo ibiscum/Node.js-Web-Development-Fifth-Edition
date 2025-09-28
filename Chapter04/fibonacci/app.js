@@ -8,10 +8,10 @@ import logger from 'morgan';
 
 import indexRouter from './routes/index.js';
 // const usersRouter = require('./routes/users');
-// const fibonacciRouter = require('./routes/fibonacci');
+import fibonacciRouter from './routes/fibonacci.js';
 // const fibonacciRouter = require('./routes/fibonacci-async1');
 // const fibonacciRouter = require('./routes/fibonacci-await');
-import fibonacciRouter from './routes/fibonacci-rest.js';
+// import fibonacciRouter from './routes/fibonacci-rest.js';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -30,7 +30,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(join(__dirname, 'public'));
+app.use(express.static('public'));
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);

@@ -1,7 +1,8 @@
 import { Router } from 'express';
-const router = Router();
 import { request } from 'http';
-//import math from '../math';
+// import math from '../math.js';
+
+const router = Router();
 
 router.get('/', function (req, res, next) {
     if (req.query.fibonum) {

@@ -1,7 +1,8 @@
-import { Router } from 'express'; 
+import { Router } from 'express';
+import { fibonacci } from '../math.js'; 
+
 const router = Router(); 
  
-import { fibonacci } from '../math'; 
 router.get('/', function(req, res) { 
   if (req.query.fibonum) { 
     // Calculate directly in this server 
