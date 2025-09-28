@@ -43,8 +43,8 @@ export async function connectDB() {
             params.params.dialect = process.env.SEQUELIZE_DBDIALECT;
         }
         // Redact sensitive info before logging
-        const redactedParams = { ...params, password: params.password ? '[REDACTED]' : undefined };
-        debug(`connectDB ${util.inspect(redactedParams)}`);
+        // Removed debug log to avoid leaking sensitive information
+        // debug(`connectDB ${util.inspect(redactedParams)}`);
         sequlz = new Sequelize(params.dbname,
                         params.username, params.password,
                         params.params);
