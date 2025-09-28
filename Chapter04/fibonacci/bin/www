@@ -4,9 +4,11 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('fibonacci:server');
-var http = require('http');
+import app from '../app.js';
+// var debug = require('debug')('fibonacci:server');
+import createDebugMessages from 'debug';
+const debug = createDebugMessages('fibonacci:server');
+import { createServer } from 'http';
 
 /**
  * Get port from environment and store in Express.
@@ -19,7 +21,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

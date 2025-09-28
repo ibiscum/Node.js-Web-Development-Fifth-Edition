@@ -1,30 +1,36 @@
 import createError from 'http-errors';
 import express from 'express';
-import { registerPartials } from 'hbs';
+import hbs from 'hbs';
 import { join } from 'path';
 import cookieParser from 'cookie-parser';
-import { json, urlencoded } from 'body-parser';
+import bodyParser from "body-parser";
 import logger from 'morgan';
 
-import indexRouter from './routes/index';
+import indexRouter from './routes/index.js';
 // const usersRouter = require('./routes/users');
 // const fibonacciRouter = require('./routes/fibonacci');
 // const fibonacciRouter = require('./routes/fibonacci-async1');
 // const fibonacciRouter = require('./routes/fibonacci-await');
-import fibonacciRouter from './routes/fibonacci-rest';
+import fibonacciRouter from './routes/fibonacci-rest.js';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 
 // view engine setup
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-registerPartials(join(__dirname, 'partials'));
+hbs.registerPartials(join(__dirname, 'partials'));
 
 app.use(logger('dev'));
-app.use(json());
-app.use(urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(join(__dirname, 'public'));
+// app.use(join(__dirname, 'public'));
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);

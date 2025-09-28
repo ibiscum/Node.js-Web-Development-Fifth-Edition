@@ -2,6 +2,7 @@
   "name": "fibonacci",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "cross-env DEBUG=fibonacci:* node ./bin/www",
     "startrest": "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node ./fiboserver",
