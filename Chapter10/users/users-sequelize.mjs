@@ -42,9 +42,9 @@ export async function connectDB() {
         params.params.dialect = process.env.SEQUELIZE_DBDIALECT;
     }
     
-    // Create a shallow copy of params with password redacted for logging
-    const paramsForLog = { ...params, password: params.password ? "***REDACTED***" : undefined };
-    log('Sequelize params ' + util.inspect(paramsForLog));
+    // Logging only non-sensitive database configuration metadata
+    log('Initializing Sequelize database connection...');
+    
     
     sequlz = new Sequelize(params.dbname, params.username, params.password, params.params);
     
