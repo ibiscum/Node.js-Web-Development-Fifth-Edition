@@ -44,12 +44,12 @@ export function fibonacciPromise(n) {
     });
 }
 
-const fibonacciAwait = module.exports.fibonacciAwait = async function(n) {
+export const fibonacciAwait = async function(n) {
     if (n === 0) return 0;
     if (n === 1 || n === 2) return 1;
     if (n === 3) return 2;
     else {
-        return await new Promise((resolve, reject) => {
+        return await new Promise((resolve) => {
             setImmediate(async () => {
                 let n1 = await fibonacciAwait(n-1);
                 let n2 = await fibonacciAwait(n-2);

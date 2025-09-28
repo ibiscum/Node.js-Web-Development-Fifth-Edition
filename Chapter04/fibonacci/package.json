@@ -10,17 +10,17 @@
     "client": "cross-env DEBUG=fibonacci:* SERVERPORT=3002 node ./fiboclient"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "cross-env": "^6.0.3",
-    "debug": "~2.6.9",
+    "cookie-parser": "~1.4.7",
+    "cross-env": "^10.0.0",
+    "debug": "~4.4.3",
     "express": "~5.1.0",
     "hbs": "~4.2.0",
-    "http-errors": "~1.6.3",
+    "http-errors": "~2.0.0",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.35.0",
-    "eslint": "^9.35.0",
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
     "globals": "^16.4.0"
   }
 }

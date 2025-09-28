@@ -2,7 +2,7 @@ import { Router } from 'express';
 const router = Router(); 
  
 import { fibonacci } from '../math'; 
-router.get('/', function(req, res, next) { 
+router.get('/', function(req, res) { 
   if (req.query.fibonum) { 
     // Calculate directly in this server 
     res.render('fibonacci', { 

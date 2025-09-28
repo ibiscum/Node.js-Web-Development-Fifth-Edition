@@ -1,4 +1,4 @@
-import { fibonacciAsync } from './math';
+import { fibonacciAsync } from './math.js';
 import express from 'express';
 import logger from 'morgan';
 const app = express();
