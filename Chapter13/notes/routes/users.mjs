@@ -112,7 +112,7 @@ if (typeof process.env.TWITTER_CONSUMER_KEY !== 'undefined'
 
 if (twitterLogin) {
 
-    console.log(`enable_twitter consumer_key ${consumer_key} consumer_secret ${consumer_secret} ${twittercallback}/users/auth/twitter/callback`);
+    console.log(`enable_twitter enabled, callback URL: ${twittercallback}/users/auth/twitter/callback`);
     passport.use(new TwitterStrategy({
         consumerKey: consumer_key,
         consumerSecret: consumer_secret,
