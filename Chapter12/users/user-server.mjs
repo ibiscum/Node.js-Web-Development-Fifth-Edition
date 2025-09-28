@@ -157,7 +157,7 @@ server.post('/password-check', async (req, res, next) => {
     try {
         await connectDB();
         const user = await SQUser.findOne({ where: { username: req.params.username } });
-        log(`userPasswordCheck query=${req.params.username} ${req.params.password} user=${user.username} ${user.password}`);
+        log(`userPasswordCheck query username=${req.params.username} userFound=${!!user}`);
         let checked;
         if (!user) {
             checked = { 
