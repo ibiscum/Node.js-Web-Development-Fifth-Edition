@@ -25,3 +25,17 @@ updates:
     directory: "/Chapter06/notes" # Location of package manifests
     schedule:
       interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter07/notes" # Location of package manifests
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter08/notes" # Location of package manifests
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter08/users" # Location of package manifests
+    schedule:
+      interval: "monthly"
+
+
