@@ -6,7 +6,7 @@ import { default as logger } from 'morgan';
 import * as rfs from 'rotating-file-stream';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:debug'); 
-const dbgerror = DBG('notes:error'); 
+// const dbgerror = DBG('notes:error'); 
 // import { default as capcon } from 'capture-console';
 import { default as cookieParser } from 'cookie-parser';
 import { default as bodyParser } from 'body-parser';
@@ -88,7 +88,7 @@ app.set('port', port);
 export const server = http.createServer(app);
 
 server.listen(port);
-server.on('request', (req, res) => {
+server.on('request', (req) => {
     debug(`${new Date().toISOString()} request ${req.method} ${req.url}`);
 });
 server.on('error', onError);

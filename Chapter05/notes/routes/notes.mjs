@@ -4,7 +4,7 @@ import { NotesStore as notes } from '../app.mjs';
 export const router = express.Router();
 
 // Add Note. (create)
-router.get('/add', (req, res, next) => {
+router.get('/add', (res) => {
     res.render('noteedit', {
         title: "Add a Note",
         docreate: true,
@@ -16,12 +16,14 @@ router.get('/add', (req, res, next) => {
 // Save Note (update)
 router.post('/save', async (req, res, next) => {
     try {
-        let note;
+        // let note;
         if (req.body.docreate === "create") {
-            note = await notes.create(req.body.notekey,
+            // note = 
+            await notes.create(req.body.notekey,
                     req.body.title, req.body.body);
         } else {
-            note = await notes.update(req.body.notekey,
+            // note = 
+            await notes.update(req.body.notekey,
                     req.body.title, req.body.body);
         }
         res.redirect('/notes/view?key='+ req.body.notekey);

@@ -6,7 +6,7 @@ import {
 } from './sequlz.mjs';
 import DBG from 'debug';
 const debug = DBG('notes:notes-sequelize'); 
-const error = DBG('notes:error-sequelize'); 
+// const error = DBG('notes:error-sequelize'); 
 
 var sequelize;
 export class SQNote extends Sequelize.Model {}

@@ -1,7 +1,7 @@
 
 import { default as DBG } from 'debug';
 const debug = DBG('notes:notes-store');
-const error = DBG('notes:error-store');
+// const error = DBG('notes:error-store');
 
 var _NotesStore;
 

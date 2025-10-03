@@ -1,6 +1,7 @@
 import { fibonacciAsync } from './math.js';
 import express from 'express';
 import logger from 'morgan';
+
 const app = express();
 app.use(logger('dev'));
 app.get('/fibonacci/:n', (req, res, next) => {
@@ -14,4 +15,5 @@ app.get('/fibonacci/:n', (req, res, next) => {
         }
     });
 });
+
 app.listen(process.env.SERVERPORT);

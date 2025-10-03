@@ -25,11 +25,11 @@ export class Note {
     static fromJSON(json) { 
         const data = JSON.parse(json);
         if (typeof data !== 'object'
-          || !data.hasOwnProperty('key')
+          || !Object.prototype.hasOwnProperty.call(data, 'key')
           || typeof data.key !== 'string'
-          || !data.hasOwnProperty('title')
+          || !Object.prototype.hasOwnProperty.call(data, 'title')
           || typeof data.title !== 'string'
-          || !data.hasOwnProperty('body')
+          || !Object.prototype.hasOwnProperty.call(data, 'body')
           || typeof data.body !== 'string') {
             throw new Error(`Not a Note: ${json}`);
         }
@@ -41,10 +41,10 @@ export class Note {
 export class AbstractNotesStore {
     static store() { }
     async close() { } // TBD document in book
-    async update(key, title, body) { }
-    async create(key, title, body) { }
-    async read(key) { }
-    async destroy(key) { }
+    async update() { }
+    async create() { }
+    async read() { }
+    async destroy() { }
     async keylist() { }
     async count() { }
 }

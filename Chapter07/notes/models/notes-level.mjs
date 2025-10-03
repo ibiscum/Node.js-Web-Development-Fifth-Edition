@@ -3,7 +3,7 @@ import { Note, AbstractNotesStore } from './Notes.mjs';
 import level from 'level';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:notes-level');
-const error = DBG('notes:error-level');
+// const error = DBG('notes:error-level');
 
 let db;
 
@@ -64,7 +64,7 @@ export default class LevelNotesStore extends AbstractNotesStore {
         let total = 0;
         await new Promise((resolve, reject) => { 
             db.createKeyStream()
-            .on('data', data => total++) 
+            // .on('data', data => total++) 
             .on('error', err => reject(err)) 
             .on('end',   ()  => resolve(total));
         }); 

@@ -3,7 +3,7 @@ import { Note, AbstractNotesStore } from './Notes.mjs';
 import { default as sqlite3 } from 'sqlite3';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:notes-sqlite3');
-const error = DBG('notes:error-sqlite3');
+// const error = DBG('notes:error-sqlite3');
 
 var db;
  
@@ -98,7 +98,7 @@ export default class SQLITE3NotesStore extends AbstractNotesStore {
         const db = await connectDB();
         debug(`keylist db=${util.inspect(db)}`);
         const keyz = await new Promise((resolve, reject) => {
-            const keyz = [];
+            // const keyz = [];
             db.all("SELECT notekey FROM notes",
                 (err, rows) => {
                     if (err) return reject(err);
