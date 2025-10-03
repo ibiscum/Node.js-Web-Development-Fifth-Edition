@@ -1,3 +1,3 @@
 {
-    export const meaning = 42;
+    // export const meaning = 42;
 }
