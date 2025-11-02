@@ -13,7 +13,8 @@
     "Chapter01",
     "Chapter02",
     "Chapter05/notes",
-    "Chapter06/notes"
+    "Chapter06/notes",
+    "Chapter07/notes"
   ],
   "devDependencies": {
     "@eslint/js": "^9.39.0",
@@ -24,8 +25,10 @@
     "cookie-parser": "^1.4.7",
     "cross-env": "^10.1.0",
     "express": "^5.1.0",
+    "fs-extra": "^11.3.2",
     "hbs": "^4.2.0",
     "morgan": "^1.10.1",
+    "rotating-file-stream": "^3.2.7",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1"
   }

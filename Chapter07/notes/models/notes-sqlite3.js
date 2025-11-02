@@ -1,5 +1,5 @@
 import util from 'util';
-import { Note, AbstractNotesStore } from './Notes.mjs';
+import { Note, AbstractNotesStore } from './Notes.js';
 import { default as sqlite3 } from 'sqlite3';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:notes-sqlite3');

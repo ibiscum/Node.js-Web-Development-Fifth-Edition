@@ -1,9 +1,9 @@
-import { Note, AbstractNotesStore } from './Notes.mjs';
+import { Note, AbstractNotesStore } from './Notes.js';
 import Sequelize from 'sequelize';
 import { 
     connectDB as connectSequlz,
     close as closeSequlz
-} from './sequlz.mjs';
+} from './sequlz.js';
 import DBG from 'debug';
 const debug = DBG('notes:notes-sequelize'); 
 // const error = DBG('notes:error-sequelize'); 

@@ -7,7 +7,7 @@ var _NotesStore;
 
 export async function useModel(model) {
     try {
-        let NotesStoreModule = await import(`./notes-${model}.mjs`);
+        let NotesStoreModule = await import(`./notes-${model}.js`);
         debug(NotesStoreModule);
         let NotesStoreClass = NotesStoreModule.default;
         debug(NotesStoreClass);

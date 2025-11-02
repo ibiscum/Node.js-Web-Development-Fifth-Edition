@@ -1,8 +1,5 @@
-
-import { server, port } from './app.mjs';
-import { default as DBG } from 'debug';
-const debug = DBG('notes:debug'); 
-const dbgerror = DBG('notes:error'); 
+import { port } from './app.js';
+import * as util from 'util';
 
 /**
  * Normalize a port into a number, string, or false.
@@ -27,7 +24,6 @@ export function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 export function onError(error) {
-    dbgerror(error);
     if (error.syscall !== 'listen') {
         throw error;
     }
@@ -46,14 +42,6 @@ export function onError(error) {
             console.error(`${bind} is already in use`);
             process.exit(1);
             break;
-        case 'ELOGFILEROTATOR':
-            console.error(`Log file initialization failure because `, error.error);
-            process.exit(1);
-            break;
-        case 'ENOTESSTORE':
-            console.error(`Notes data store initialization failure because `, error.error);
-            process.exit(1);
-            break;
         default:
             throw error;
     }
@@ -62,12 +50,13 @@ export function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
+import { server } from './app.js';
 export function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
-    debug(`Listening on ${bind}`);
+    console.log(`Listening on ${bind}`);
 }
 
 
@@ -81,7 +70,7 @@ export function basicErrorHandler(err, req, res, next) {
     // Defer to built-in error handler if headersSent
     // See: http://expressjs.com/en/guide/error-handling.html
     if (res.headersSent) {
-        debug(`basicErrorHandler HEADERS SENT error ${util.inspect(err)}`);
+        console.log(`basicErrorHandler HEADERS SENT error ${util.inspect(err)}`);
         return next(err)
     }
     // set locals, only providing error in development
@@ -92,28 +81,3 @@ export function basicErrorHandler(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 }
-
-process.on('uncaughtException', function(err) { 
-    console.error(`I've crashed!!! - ${(err.stack || err)}`); 
-});
-
-import * as util from 'util';
-
-process.on('unhandledRejection', (reason, p) => {
-    console.error(`Unhandled Rejection at: ${util.inspect(p)} reason: ${reason}`);
-});
-
-import { NotesStore } from './models/notes-store.mjs';
-
-async function catchProcessDeath() {
-    debug('urk...');
-    await NotesStore.close();
-    await server.close();
-    process.exit(0);
-}
-
-process.on('SIGTERM', catchProcessDeath);
-process.on('SIGINT', catchProcessDeath);
-process.on('SIGHUP', catchProcessDeath);
-
-process.on('exit', () => { debug('exiting...'); });

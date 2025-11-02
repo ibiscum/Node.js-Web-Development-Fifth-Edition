@@ -1,16 +1,16 @@
 {
-  "name": "notes",
+  "name": "ch07notes",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "cross-env DEBUG=notes:* node ./app.mjs",
-    "fs-start": "cross-env DEBUG=notes:* PORT=3000 NOTES_MODEL=fs node ./app.mjs",
-    "fs-server1": "cross-env NOTES_MODEL=fs PORT=3001 node ./app.mjs",
-    "fs-server2": "cross-env NOTES_MODEL=fs PORT=3002 node ./app.mjs",
-    "level-start": "cross-env DEBUG=notes:* PORT=3000 NOTES_MODEL=level node ./app.mjs",
-    "level-server1": "cross-env NOTES_MODEL=level PORT=3001 node ./app.mjs",
-    "level-server2": "cross-env NOTES_MODEL=level PORT=3002 node ./app.mjs",
+    "start": "cross-env DEBUG=notes:* node ./app.js",
+    "fs-start": "cross-env DEBUG=notes:* PORT=3000 NOTES_MODEL=fs node ./app.js",
+    "fs-server1": "cross-env NOTES_MODEL=fs PORT=3001 node ./app.js",
+    "fs-server2": "cross-env NOTES_MODEL=fs PORT=3002 node ./app.js",
+    "level-start": "cross-env DEBUG=notes:* PORT=3000 NOTES_MODEL=level node ./app.js",
+    "level-server1": "cross-env NOTES_MODEL=level PORT=3001 node ./app.js",
+    "level-server2": "cross-env NOTES_MODEL=level PORT=3002 node ./app.js",
     "sqlite3-setup": "sqlite3 chap07.sqlite3 --init models/schema-sqlite3.sql",
     "sqlite3-start": "cross-env SQLITE_FILE=chap07.sqlite3 DEBUG=notes:* NOTES_MODEL=sqlite3 node ./app.mjs",
     "sqlite3-server1": "cross-env SQLITE_FILE=chap07.sqlite3 NOTES_MODEL=sqlite3 PORT=3001 node ./app.mjs",
@@ -25,29 +25,6 @@
     "dl-minty-css": "wget https://bootswatch.com/4/minty/bootstrap.css -O minty/bootstrap.css",
     "dl-minty-min-css": "wget https://bootswatch.com/4/minty/bootstrap.min.css -O minty/bootstrap.min.css"
   },
-  "dependencies": {
-    "bootstrap": "^5.3.x",
-    "cookie-parser": "^1.4.7",
-    "cross-env": "^10.0.0",
-    "debug": "^4.4.3",
-    "express": "^5.1.0",
-    "feather-icons": "^4.29.2",
-    "fs-extra": "^11.3.2",
-    "hbs": "^4.2.x",
-    "http-errors": "^2.0.0",
-    "jquery": "^3.7.x",
-    "js-yaml": "^4.1.0",
-    "level": "^10.0.0",
-    "mongodb": "^6.20.0",
-    "morgan": "^1.10.1",
-    "popper.js": "^1.16.1",
-    "rotating-file-stream": "^3.2.7",
-    "sequelize": "^6.37.7",
-    "sqlite3": "^5.x"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.35.0",
-    "eslint": "^9.35.0",
-    "globals": "^16.4.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

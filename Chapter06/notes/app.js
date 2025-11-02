@@ -3,36 +3,19 @@ import { default as hbs } from 'hbs';
 import * as path from 'path';
 // import * as favicon from'serve-favicon';
 import { default as logger } from 'morgan';
-import * as rfs from 'rotating-file-stream';
-import { default as DBG } from 'debug';
-const debug = DBG('notes:debug'); 
-// const dbgerror = DBG('notes:error'); 
-// import { default as capcon } from 'capture-console';
 import { default as cookieParser } from 'cookie-parser';
 import { default as bodyParser } from 'body-parser';
 import * as http from 'http';
-// import fs from 'fs';
-import { approotdir } from './approotdir.mjs';
+import { approotdir } from './approotdir.js';
 const __dirname = approotdir;
 import {
     normalizePort, onError, onListening, handle404, basicErrorHandler
-} from './appsupport.mjs';
+} from './appsupport.js';
+import { InMemoryNotesStore } from './models/notes-memory.js';
+export const NotesStore = new InMemoryNotesStore();
 
-import { router as indexRouter } from './routes/index.mjs';
-import { router as notesRouter }  from './routes/notes.mjs'; 
-
-// capcon.startCapture(process.stdout, function (stdout) {
-//    fs.appendFileSync('stdout.txt', stdout, 'utf8');
-// });
-//
-// capcon.startCapture(process.stderr, function (stderr) {
-//    fs.appendFileSync('stderr.txt', stderr, 'utf8');
-// });
-
-import { useModel as useNotesModel } from './models/notes-store.mjs';
-useNotesModel(process.env.NOTES_MODEL ? process.env.NOTES_MODEL : "memory")
-.then(store => { debug(`Using NotesStore ${store}`); })
-.catch(error => { onError({ code: 'ENOTESSTORE', error }); });
+import { router as indexRouter } from './routes/index.js';
+import { router as notesRouter }  from './routes/notes.js'; 
 
 export const app = express();
 
@@ -44,16 +27,7 @@ hbs.registerPartials(path.join(__dirname, 'partials'));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(logger(process.env.REQUEST_LOG_FORMAT || 'dev', {
-    // immediate: true,
-    stream: process.env.REQUEST_LOG_FILE ?
-        rfs.createStream(process.env.REQUEST_LOG_FILE, {
-            size:     '10M', // rotate every 10 MegaBytes written
-            interval: '1d',  // rotate daily
-            compress: 'gzip' // compress rotated files
-        })
-        : process.stdout
-}));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -88,8 +62,5 @@ app.set('port', port);
 export const server = http.createServer(app);
 
 server.listen(port);
-server.on('request', (req) => {
-    debug(`${new Date().toISOString()} request ${req.method} ${req.url}`);
-});
 server.on('error', onError);
 server.on('listening', onListening);

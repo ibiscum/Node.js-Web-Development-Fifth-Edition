@@ -18,10 +18,10 @@ export class Note {
 }
 
 export class AbstractNotesStore {
-    async update(key, title, body) { }
-    async create(key, title, body) { }
-    async read(key) { }
-    async destroy(key) { }
+    async update() { }
+    async create() { }
+    async read() { }
+    async destroy() { }
     async keylist() { }
     async count() { }
 }

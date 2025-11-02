@@ -1,4 +1,4 @@
-import { Note, AbstractNotesStore } from './Notes.mjs';
+import { Note, AbstractNotesStore } from './Notes.js';
 import mongodb from 'mongodb'; 
 const MongoClient = mongodb.MongoClient;
 import DBG from 'debug';
