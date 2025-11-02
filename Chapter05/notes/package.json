@@ -4,24 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "cross-env DEBUG=notes:* node ./app.mjs",
-    "server1": "cross-env DEBUG=notes:* PORT=3001 node ./app.mjs",
-    "server2": "cross-env DEBUG=notes:* PORT=3002 node ./app.mjs"
+    "start": "cross-env DEBUG=notes:* node ./app.js",
+    "server1": "cross-env DEBUG=notes:* PORT=3001 node ./app.js",
+    "server2": "cross-env DEBUG=notes:* PORT=3002 node ./app.js"
   },
-  "dependencies": {
-    "cookie-parser": "^1.4.7",
-    "cross-env": "^10.0.0",
-    "debug": "^4.4.3",
-    "express": "^5.1.0",
-    "hbs": "^4.2.0",
-    "http-errors": "^2.0.0",
-    "morgan": "^1.10.1"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "eslint": "^9.36.0",
-    "globals": "^16.4.0",
-    "stylelint": "^16.24.0",
-    "stylelint-config-standard": "^39.0.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

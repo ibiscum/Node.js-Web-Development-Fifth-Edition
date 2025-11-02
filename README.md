@@ -5,7 +5,7 @@
 
 [![Dependabot Updates](https://github.com/ibiscum/Node.js-Web-Development-Fifth-Edition/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/ibiscum/Node.js-Web-Development-Fifth-Edition/actions/workflows/dependabot/dependabot-updates)
 
-<a href="https://www.packtpub.com/web-development/node-js-web-development-fifth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838987572"><img src="https://www.packtpub.com/media/catalog/product/cache/4cdce5a811acc0d2926d7f857dceb83b/9/7/9781838987572-original_38.jpeg" alt="Node.js Web Development - Fifth Edition" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/web-development/node-js-web-development-fifth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838987572"></a>
 
 This is the code repository for [Node.js Web Development - Fifth Edition](https://www.packtpub.com/web-development/node-js-web-development-fifth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838987572), published by Packt.
 
@@ -56,7 +56,7 @@ With the following software and hardware list you can run all code files present
 | 7        | MongoDB                             | Windows, Mac OS X, and Linux (Any) |
 | 7        | Sequelize                           | Windows, Mac OS X, and Linux (Any) |
 | 9        | Socket.IO                           | Windows, Mac OS X, and Linux (Any) |
-|10        | Multipass                           | Windows, Mac OS X, and Linux (Any) |
+| 10       | Multipass                           | Windows, Mac OS X, and Linux (Any) |
 | 11       | Docker                              | Windows, Mac OS X, and Linux (Any) |
 | 12       | Terraform                           | Windows, Mac OS X, and Linux (Any) |
 | 13       | Mocha                               | Windows, Mac OS X, and Linux (Any) |
@@ -70,7 +70,6 @@ With the following software and hardware list you can run all code files present
 
 ### Errata
 * Page 28: **return 2** _should be replaced as_ **done(2)**
-
 
 ## Get to Know the Author
 **David Herron**

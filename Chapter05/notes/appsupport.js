@@ -1,4 +1,4 @@
-import { port } from './app.mjs';
+import { port } from './app.js';
 
 /**
  * Normalize a port into a number, string, or false.
@@ -49,7 +49,7 @@ export function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-import { server } from './app.mjs';
+import { server } from './app.js';
 export function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'

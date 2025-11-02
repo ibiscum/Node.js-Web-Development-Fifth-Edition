@@ -5,18 +5,25 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "private":true,
-
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "workspaces": [
     "Chapter01",
-    "Chapter02"
+    "Chapter02",
+    "Chapter05/notes"
   ],
   "devDependencies": {
     "@eslint/js": "^9.39.0",
     "eslint": "^9.39.0",
     "globals": "^16.5.0"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cross-env": "^10.1.0",
+    "express": "^5.1.0",
+    "hbs": "^4.2.0",
+    "morgan": "^1.10.1"
   }
 }

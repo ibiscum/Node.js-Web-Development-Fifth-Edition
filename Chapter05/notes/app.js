@@ -7,11 +7,11 @@ import { default as logger } from'morgan';
 import { default as cookieParser } from'cookie-parser';
 import { default as bodyParser } from'body-parser';
 import * as http from 'http';
-import { approotdir } from './approotdir.mjs';
+import { approotdir } from './approotdir.js';
 const __dirname = approotdir;
 import {
     normalizePort, onError, onListening, handle404, basicErrorHandler
-} from './appsupport.mjs';
+} from './appsupport.js';
 import { InMemoryNotesStore } from './models/notes-memory.mjs';
 export const NotesStore = new InMemoryNotesStore();
 
