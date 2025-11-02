@@ -16,7 +16,7 @@ import { approotdir } from './approotdir.mjs';
 const __dirname = approotdir;
 import {
     normalizePort, onError, onListening, handle404, basicErrorHandler
-} from './appsupport.mjs';
+} from './appsupport.js';
 
 // import dotenv from 'dotenv/config.js';
 

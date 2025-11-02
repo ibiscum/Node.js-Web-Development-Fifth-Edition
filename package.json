@@ -14,7 +14,8 @@
     "Chapter02",
     "Chapter05/notes",
     "Chapter06/notes",
-    "Chapter07/notes"
+    "Chapter07/notes",
+    "Chapter08"
   ],
   "devDependencies": {
     "@eslint/js": "^9.39.0",

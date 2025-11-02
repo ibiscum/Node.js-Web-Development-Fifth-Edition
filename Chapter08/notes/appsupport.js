@@ -1,5 +1,5 @@
 
-import { server, port } from './app.mjs';
+import { server, port } from './app.js';
 import { default as DBG } from 'debug';
 const debug = DBG('notes:debug'); 
 const dbgerror = DBG('notes:error'); 
