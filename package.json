@@ -1,15 +1,22 @@
 {
-  "name": "chapter01",
+  "name": "node.js-web-development",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "",
   "type": "module",
   "private":true,
+
   "scripts": {
-    "dev": "node fiboapp.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "workspaces": [
+    "Chapter01",
+    "Chapter02"
+  ],
   "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "globals": "^16.5.0"
   }
 }

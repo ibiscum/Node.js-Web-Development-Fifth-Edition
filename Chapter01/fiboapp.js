@@ -1,7 +1,7 @@
 import { createServer } from 'http';
 import { parse } from 'url';
 
-const fibonacci = exports.fibonacci = function(n) {
+const fibonacci = function(n) {
     if (n === 1 || n === 2)
         return 1;
     else
