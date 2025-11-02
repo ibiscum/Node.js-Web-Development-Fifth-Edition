@@ -5,7 +5,7 @@
 
 [![Dependabot Updates](https://github.com/ibiscum/Node.js-Web-Development-Fifth-Edition/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/ibiscum/Node.js-Web-Development-Fifth-Edition/actions/workflows/dependabot/dependabot-updates)
 
-<a href="https://www.packtpub.com/web-development/node-js-web-development-fifth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838987572"></a>
+<a href="https://www.packtpub.com/en-us/product/nodejs-web-development-9781838983253"></a>
 
 This is the code repository for [Node.js Web Development - Fifth Edition](https://www.packtpub.com/web-development/node-js-web-development-fifth-edition?utm_source=github&utm_medium=repository&utm_campaign=9781838987572), published by Packt.
 
