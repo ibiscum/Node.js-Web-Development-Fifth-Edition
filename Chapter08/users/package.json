@@ -9,16 +9,5 @@
   "author": "David Herron <david@davidherron.com>",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^6.x",
-    "commander": "^14.0.1",
-    "cross-env": "^10.x",
-    "debug": "^4.4.3",
-    "fs-extra": "^11.3.2",
-    "js-yaml": "^4.1.0",
-    "memfs": "^4.42.0",
-    "restify": "^11.1.0",
-    "restify-clients": "^4.2.0",
-    "sequelize": "^6.37.7",
-    "sqlite3": "^5.x"
   }
 }
