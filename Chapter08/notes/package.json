@@ -26,7 +26,7 @@
     "hbs": "^4.2.x",
     "http-errors": "^2.0.0",
     "jquery": "^4.0.x",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^5.2.0",
     "level": "^10.0.0",
     "memorystore": "^1.6.7",
     "mongodb": "^7.0.0",
